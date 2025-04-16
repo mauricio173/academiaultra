@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="img/images (9).ico" type="image/x-icon" id="iconess" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/indexed.css" />
+
+		<!--
+		<script src="js/indexed.js" defer></script>
+		<script src="js/Scripts.js" defer></script>
+		-->
+		<script src="js/script.js" defer></script>
+		<script src="js/index.js" defer></script>
+		<!--<script src="js/ponto.js" defer></script>-->
+		<script src="js/ponto.js" defer></script>
+
+		<title>ultraBssAcode</title>
+		<style type="text/css" media="all">
+
+			.hidden {
+			    display: none;
+			}
+
+			#loading {
+			    position: fixed;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    background: rgba(0, 0, 0, 0.8);
+			    padding: 20px;
+			    border-radius: 10px;
+			    color: white;
+			    text-align: center;
+			    z-index: 9999;
+			}
+
+			.spinner {
+			    border: 4px solid rgba(255, 255, 255, 0.3);
+			    border-radius: 50%;
+			    border-top: 4px solid white;
+			    width: 40px;
+			    height: 40px;
+			    animation: spin 1s linear infinite;
+			    margin: 10px auto;
+			}
+
+			@keyframes spin {
+			    0% { transform: rotate(0deg); }
+			    100% { t
+			ransform: rotate(360deg); }
+			}
+
+			.mensagem {
+			    position: fixed;
+			    top: 10px;
+			    left: 50%;
+			    transform: translateX(-50%);
+			    padding: 15px;
+			    border-radius: 5px;
+			    font-weight: bold;
+			    color: white;
+			    text-align: center;
+			    z-index: 1000;
+			}
+
+			.mensagem.sucesso {
+			    background-color: #28a745;
+			}
+
+			.mensagem.erro {
+			    background-color: #dc3545;
+			}
+
+			.hidden {
+
+			    display: none;
+			}
+
+			/*#lista_resultados {
+			    margin: 20px auto;
+			    width: 302px;
+			    text-align: center;
+			    border: 1px solid #f21a1a;
+			}*/
+
+			table {
+			    width: 100%;
+			    border-collapse: collapse;
+			}
+
+			th {
+			    padding: 10px;
+			    border: 1px solid #ddd;
+			}
+
+			td {
+			    padding: 5px;
+			    border: 1px solid #ddd;
+			    white-space: nowrap;
+			    overflow: auto;
+			}
+
+			th {
+			    background-color: #f58e2f;
+			    color: #000;
+			}
+			/*
+			tr:nth-child(even) {
+			    background-color: #f58e2f;
+			}
+			*/
+			tr {
+			    background-color: #fff;
+			}
+
+			.lista_registros {
+				white-space: nowrap;
+				width: 275px;
+				overflow: scroll;
+				border: 1px solid #16d3f1;
+			}
+
+			.h6_registros {
+				margin: 8px 0;
+				color: #28abab;
+				font-weight: bold;
+				text-shadow: .5px .5px #fff;
+			}
+			.item_registros {
+				margin: 8px 0;
+				color: #28abab;
+				font-weight: bold;
+				text-shadow: .5px .5px #fff;
+			}
+		</style>
+	</head>
+	<body> 
+		<header class="header">
+			<img src="https://mauricio173.github.io/Ultra/img/logo-ultra.png" alt="Logotipo Academia Ultra" style="width: 80px; height: 50px" />
+			<nav class="nav">
+				<ul>
+					<li>
+						<a href="https://mauricio173.github.io/Ultra" target="_blank"> Início </a>
+					</li>
+					<li>
+						<a href="https://mauricio173.github.io/Ultra/Estacionamento/index.html" target="_blank"> GARAGEM </a>
+					</li>
+					<li>
+						<a href="https://mauricio173.github.io/Ultra/Tarefas/index.html" target="_blank"> Tarefa </a>
+					</li>
+					<li>
+						<a href="https://mauricio173.github.io/Ultra/Estacionamento/PercorrerLista/indexed.html" target="_blank"> Lista </a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<div class="container boxBtn">
+			<button type="button" id="btn_verificar" onclick="">VERIFICAR</button>
+			<button type="button" id="btn_ponto">PONTO</button>
+			<button type="button" id="btn_ponto_auto">PONTOS</button>
+			<button type="button" id="btn_limpar">LIMPAR</button>
+			<button type="button" id="btn_reg_estaci" onclick="autoLabel()">Reg Est</button>
+			<button type="button" id="btn_remove_array" onclick="regStorageRemove()">Remover</button>
+			<button type="button" id="btn_ajustarPonto" onclick="">AjustarP</button>
+			<button type="button" id="btn_ajustarInput" onclick="">AjustarI</button>
+		</div>
+		<div id="container_resultados">
+			<section name="input_user" class="scroll_bar">
+				
+			<textarea class="labelListas" name="" id="listasText" rows="8" cols="">02175203085;MAURICIO MARQUES RIOS;2024-09-20;2025-03-20;1;02175203085</textarea>
+			</section>
+   <section id="boxe_resultados">
+			<!-- JS -->
+			<div class="resultados cabecalho">
+				<h3>DETALHES DOS RESULTADOS</h3>
+			</div>
+			<div class="resultados corpo">
+				<h4>
+					
+      REGISTROS ESTACIONAMENTO:
+
+				</h4>
+			</div>
+			<div class="resultados rodape">
+				<div>
+					<h4>
+						LISTA REGISTROS AJUSTADOS:
+					</h4>
+				</div>
+			</div> 
+			<div class="resultados copiados" id="copiados">
+				<div>
+					<h4>
+						LISTA REGISTROS COPIADOS:
+					</h4>
+
+				</div>
+			</div> 
+			<!-- FIM JS -->
+   </section>
+		</div>
+
+		
+<!--
+		<div id="resultado">
+			<h3>RESULTADO DE REGISTROS:</h3>
+			<div class="box_resultados box_resultados_footers"></div>
+		</div>
+		
+		<div id="lista_resultados">
+			<h3>Registros Processados</h3>
+			<table>
+				<thead>
+					<tr>
+						<th>N°</th>
+						<th>CPF</th>
+						<th>Nome</th>
+						<th>Data Inicial</th>
+						<th>Data Final</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody id="lista_corpo"></tbody>
+			</table>
+		</div>
+-->
+		<div id="loading" class="hidden">
+			<div class="spinner"></div>
+			<p>Processando...</p>
+		</div>
+
+		<div id="mensagem" class="mensagem hidden"></div>
+
+		
+
+		<div style="display: none" id="viewListaAtualizada">
+			<h3 class="reset">REGISTROS ATUALIZADOS:</h3>
+			<div class="cpfRepetidoRegistros">
+				<h3 class="reset">SEM REGISTROS</h3>
+			</div>
+		</div>
+
+		<div style="display: none" id="resultado">
+			<h3>RESULTADO DE REGISTROS:</h3>
+			<div class="box_resultados">
+				<h6>7 Registros Foram Analisados</h6>
+				<h3>5 Foram Atualizados</h3>
+				<h6>(Sem Repetição de CPF + Vencimento 18/08/2025)</h6>
+				<ul class="box_listas scroll_bar">
+					<li>02175203085;MAURICIO RIOS;2024-09-20;2025-08-18;1;02175203085</li>
+					<li>03312991196;MAURICIO ROSPIDE;2024-09-20;2025-08-18;1;03312991196</li>
+					<li>93603835034;MAURICIO HOLIFIELD;2024-09-20;2025-08-18;1;93603835034</li>
+					<li>86569929020;MAURICIO ALBUQUERQUE;2024-09-20;2025-08-18;1;86569929020</li>
+					<li>00997902035;MAURICIO RAMOS;2024-09-20;2025-08-18;1;00997902035</li>
+				</ul>
+			</div>
+			<!--
+			<div class="box_resultados">
+				<h3 class="reset">CPFs Repetidos:</h3>
+				<ul class="box_listas scroll_bar">
+					<li>02175203085;MAURICIO MARQUES RIOS;2024-09-20;2025-01-03;1;02175203085</li>
+					<li>02175203085;MAURICIO TECHE MEYER;2024-09-20;2025-03-02;1;02175203085</li>
+				</ul>
+			</div>
+			-->
+			<div class="box_resultados box_resultados_footer">
+				<span>
+					<h3>21 CPFs Repetidos:</h3>
+					<ul class="box_listas scroll_bar">
+						<li class="negrito">O CPF <b> 02175203085 </b> foi encontrado em 3 registros</li>
+
+						<li class="negrito">&nbsp;O CPF <b> 03379443000 </b> foi encontrado em 10 registros &nbsp;</li>
+
+						<li class="negrito">O CPF <b> 02669395031 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 07904395495 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 86463110078 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 86320455020 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 02832630081 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 02119074054 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 01603372083 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 97360309034 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 86842277000 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 01010327062 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 00954927044 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 48335312087 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 01336368012 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 29044797832 </b> foi encontrado em 12 registros</li>
+
+						<li class="negrito">O CPF <b> 26435681848 </b> foi encontrado em 6 registros</li>
+
+						<li class="negrito">O CPF <b> 05107842089 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 86059092004 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 86088777087 </b> foi encontrado em 2 registros</li>
+
+						<li class="negrito">O CPF <b> 03545001040 </b> foi encontrado em 2 registros</li>
+					</ul>
+				</span>
+			</div>
+			<div class="box_registros"></div>
+		</div>
+
+		<div style="display:" id="viewListaCopia">
+			<div class="boxes">
+				<h3>Hora Funcionário</h3>
+				<p></p>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="boxFooter" style="display:">
+				<span>
+					<h3>Selecionar Elementos</h3>
+					<div>
+						<label for="todasPropriedades">
+							<input type="checkbox" id="todasPropriedades" />
+							Todos os estilos
+						</label>
+						<label for="classesUm">
+							<input type="checkbox" id="classesUm" />
+							Uma Classe
+						</label>
+						<label for="selId">
+							<input type="checkbox" name="checkboxes" id="selId" onclick="marcaDesmarca(this)" />
+							ID
+						</label>
+						<label for="selClas">
+							<input type="checkbox" name="checkboxes" id="selClas" onclick="marcaDesmarca(this)" />
+							CLASSE
+						</label>
+					</div>
+					<div>
+						<section>
+							<select id="identificarElementos"></select>
+							<input type="text" id="pesquisaEstilosElemento" placeholder="Pesquisar propriedade..." />
+							<select id="estilosElemento">
+								<option value="display">display</option>
+							</select>
+							<button type="button" id="enviarBtnProp">Enviar</button>
+							<button type="button" id="btnVerMetodos">Métodos</button>
+							<button type="button" id="btnMetodos">Teste</button>
+						</section>
+					</div>
+					<div id="metodosContainer"></div>
+				</span>
+				<div class="boxe">
+					<p>AUTOCOMPLETAR REGISTROS</p>
+					<button id="btnLabel" class="submit-btn">LABEL</button>
+					<select name="" id="opLabel">
+						<!--<option value="Selecione a opção">Selecione a opção</option>-->
+						<option value="zero">Selecione a opção</option>
+						<option value="um">Lista 1</option>
+						<option value="dois">Lista 2</option>
+						<option value="tres">Lista 3</option>
+						<option value="quatro">Lista 4</option>
+					</select>
+					<label for="maisUm">
+						selecionar mais de um
+						<input type="radio" name="foo" id="maisUm" value="" />
+					</label>
+					<span style="display:">
+						<label for="um">
+							Lista 1
+							<input type="checkbox" name="foo" id="um" value="um" />
+						</label>
+						<label for="dois">
+							Lista 2
+							<input type="checkbox" name="foo" id="dois" value="dois" />
+						</label>
+						<label for="tres">
+							Lista 3
+							<input type="checkbox" name="foo" id="tres" value="tres" />
+						</label>
+						<label for="quatro">
+							Lista 4
+							<input type="checkbox" name="foo" id="quatro" value="quatro" />
+						</label>
+						<label for="cinco">
+							Lista 5
+							<input type="checkbox" name="foo" id="cinco" value="cinco" />
+						</label>
+						<label for="seis">
+							Lista 6
+							<input type="checkbox" name="foo" id="seis" value="seis" />
+						</label>
+					</span>
+					<div class="selecionado"></div>
+				</div>
+				<span style="display: none">
+					<div id="mdnContainer"></div>
+					<div id="webviewContainer"></div>
+					<label for="propriedade">Digite a propriedade CSS:</label>
+					<input type="text" id="propriedade" value="display" placeholder="Ex: display" />
+					<button onclick="carregarMDNSite()">MDNSite</button>
+					<button onclick="carregarResumoMDN()">MDN</button>
+					<button onclick="carregarMDN()">Abrir MDN</button>
+
+					<iframe id="mdnIframe" width="100%" height="500px" style="border: 1px solid #ccc"></iframe>
+
+					<script>
+						async function carregarResumoMDN() {
+							let propriedade = document.getElementById("propriedade").value.trim();
+							let urlAPI = `https://developer.mozilla.org/api/v1/doc/en-US/web/css/${propriedade}`;
+
+							try {
+								let response = await fetch(urlAPI);
+								let data = await response.json();
+
+								document.getElementById("mdnContainer").innerHTML = `
+            <h2>${data.title}</h2>
+            <p>${data.summary}</p>
+            <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/${propriedade}" target="_blank">MDN</a>
+            <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/${propriedade}" target="_blank">Leia mais no MDN</a>
+        `;
+							} catch (error) {
+								console.error("Erro ao buscar informações do MDN:", error);
+							}
+						}
+						function carregarMDNSite() {
+							let propriedade = document.getElementById("propriedade").value.trim();
+							let url = `https://developer.mozilla.org/pt-BR/docs/Web/CSS/${propriedade}`;
+
+							document.getElementById("webviewContainer").innerHTML = `
+    <iframe src="${url}" width="100%" height="600px"></iframe>
+`;
+						}
+
+						function carregarMDN() {
+							let propriedade = document.getElementById("propriedade").value.trim();
+							if (!propriedade) {
+								alert("Por favor, digite uma propriedade CSS.");
+								return;
+							}
+
+							//let url = `https://developer.mozilla.org/pt-BR/docs/Web/CSS/${propriedade}`;
+							let url = `https://developer.mozilla.org/en-US/docs/Web/CSS/${propriedade}`;
+							document.getElementById("mdnIframe").src = url;
+							console.log(url);
+							console.log(url);
+							window.open(url, "_blank");
+						}
+					</script>
+				</span>
+			</div>
+
+			<div id="popup" class="popup">
+				<div class="popup-content">
+					<h3>Selecionar Elemento</h3>
+					<label> <input type="radio" name="tipoSelecao" value="tag" checked /> Tags </label>
+					<label> <input type="radio" name="tipoSelecao" value="especifico" /> Elementos com ID/Classe </label>
+					<select id="elementoPai"></select>
+					<button id="selecionarPai">Selecionar este elemento</button>
+					<h4>Filhos:</h4>
+					<ul id="listaFilhos"></ul>
+
+					<h4>Código Fonte:</h4>
+					<div id="codigoFonte" class="codigo-fonte"></div>
+
+					<h4>Caminho Relativo:</h4>
+					<div id="caminhoCSS" class="codigo-fonte"></div>
+					<div id="caminhoJS" class="codigo-fonte"></div>
+
+					<button id="fecharPopup">Fechar</button>
+				</div>
+			</div>
+		</footer>
+		<section class="footer">
+			<h2>Informe um Seletor, Objeto ou Tipo de Dado</h2>
+			<input type="text" id="inputSelector" placeholder="Digite um seletor (#id, .class, tag, Array, Object)" />
+			<button id="btnBuscar">Buscar Prototypes</button>
+
+			<h3>Prototypes Disponíveis:</h3>
+			<ul id="listaPrototypes"></ul>
+
+			<script>
+				document.getElementById("btnBuscar").addEventListener("click", () => {
+					const inputValor = document.getElementById("inputSelector").value.trim();
+					const listaPrototypes = document.getElementById("listaPrototypes");
+					listaPrototypes.innerHTML = ""; // Limpa a lista antes de exibir
+
+					let elemento;
+
+					try {
+						// Verifica se é um seletor CSS para buscar no DOM
+						if (document.querySelector(inputValor)) {
+							elemento = document.querySelector(inputValor);
+						}
+						// Verifica se é um tipo de dado como Array, Object, String, Number
+						else if (window[inputValor]) {
+							elemento = window[inputValor].prototype;
+						}
+						// Se for um construtor manual, usa diretamente
+						else {
+							elemento = eval(`(${inputValor})`);
+						}
+
+						// Obtém o prototype e lista métodos/propriedades
+						const proto = Object.getPrototypeOf(elemento) || elemento.__proto__;
+						const propriedades = Object.getOwnPropertyNames(proto);
+
+						if (propriedades.length > 0) {
+							propriedades.forEach(prop => {
+								let li = document.createElement("li");
+								li.textContent = prop;
+								listaPrototypes.appendChild(li);
+							});
+						} else {
+							listaPrototypes.innerHTML = "<li>Nenhum prototype encontrado.</li>";
+						}
+					} catch (error) {
+						listaPrototypes.innerHTML = `<li style="color: red;">Erro: Seletor ou tipo inválido.</li>`;
+					}
+				});
+			</script>
+		</section>
+		<script src="https://cdn.jsdelivr.net/npm/eruda" onload="eruda.init()"></script>
+		<script type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Finder</title>
+</head>
+<body>
+    <h2>Informe um Seletor, Objeto ou Tipo de Dado</h2>
+    <input type="text" id="inputSelector" placeholder="Digite um seletor (#id, .class, tag, Array, Object)">
+    <button id="btnBuscar">Buscar Prototypes</button>
+
+    <h3>Prototypes Disponíveis:</h3>
+    <ul id="listaPrototypes"></ul>
+
+    <script>
+        document.getElementById("btnBuscar").addEventListener("click", () => {
+            const inputValor = document.getElementById("inputSelector").value.trim();
+            const listaPrototypes = document.getElementById("listaPrototypes");
+            listaPrototypes.innerHTML = ""; // Limpa a lista antes de exibir
+
+            let elemento;
+
+            try {
+                // Verifica se é um seletor CSS para buscar no DOM
+                if (document.querySelector(inputValor)) {
+                    elemento = document.querySelector(inputValor);
+                } 
+                // Verifica se é um tipo de dado como Array, Object, String, Number
+                else if (window[inputValor]) {
+                    elemento = window[inputValor].prototype;
+                } 
+                // Se for um construtor manual, usa diretamente
+                else {
+                    elemento = eval(`(${inputValor})`);
+                }
+
+                // Obtém o prototype e lista métodos/propriedades
+                const proto = Object.getPrototypeOf(elemento) || elemento.__proto__;
+                const propriedades = Object.getOwnPropertyNames(proto);
+
+                if (propriedades.length > 0) {
+                    propriedades.forEach(prop => {
+                        let li = document.createElement("li");
+                        li.textContent = prop;
+                        listaPrototypes.appendChild(li);
+                    });
+                } else {
+                    listaPrototypes.innerHTML = "<li>Nenhum prototype encontrado.</li>";
+                }
+            } catch (error) {
+                listaPrototypes.innerHTML = `<li style="color: red;">Erro: Seletor ou tipo inválido.</li>`;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+-->
