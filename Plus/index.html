@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/script.js" defer></script>
+  <title>plus</title>
+  <script src="https://cdn.jsdelivr.net/npm/eruda" onload="eruda.init()" defer>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+	<h1>plus</h1>
+	<div id="container_resultados">
+<!--		<div class="lol">
+			<input type="file" id="fileInput" accept=".txt">
+<pre id="output"></pre
+>
+<script type="text/javascript" charset="utf-8">
+	
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+
+    if (file && file.type === "text/plain") {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const content = e.target.result;
+            document.getElementById('output').textContent = content;
+
+            // Aqui você pode processar o conteúdo como quiser:
+            // Exemplo: separar por linhas
+            const linhas = content.split('\n');
+            console.log('Linhas do arquivo:', linhas);
+        };
+
+        reader.readAsText(file);
+    } else {
+        alert("Por favor, selecione um arquivo .txt vá
+lido.");
+    }
+});
+</script>
+		</div>-->
+<!--		<div class="col">
+			<input type="file" accept=".txt" id="fileInput">
+<pre id="output"></pre>
+
+<script>
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+
+    if (file && file.name.endsWith('.txt')) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const content = e.target.result;
+            document.getElementById('output').textContent = content;
+        };
+
+        reader.readAsText(file);
+    } else {
+        alert('Selecione um arquivo .txt válido.');
+    }
+});
+</script>
+
+		</div>-->
+		<div class="">
+			<!--<input type="file" accept=".txt" id="fileInput">
+<pre id="output"></pre>-->
+
+
+
+
+<input type="file" id="arquivoPDF" accept="application/pdf">
+
+  
+
+<script>
+   
+/*document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+
+    if (file && file.name.endsWith('.txt')) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const content = e.target.result;
+
+            // Exibe no HTML (opcional)
+            document.getElementById('output').textContent = content;
+
+            // Exibe no console
+            console.log('Conteúdo do arquivo:');
+            console.log(content);
+        };
+
+      //  reader.readAsText(file);
+        reader.readAsArrayBuffer(file); // Para usar com PDF.jsdelivr
+    } else {
+        alert('Selecione um arquivo .txt válido.');
+    }
+});*/
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/eruda" onload="eruda.init()">
+</script>
+		</div>
+		   <section id="horas">
+   	<textarea class="labelListas" name="horatext" id="horatext" rows="8" cols="">04:52:34
+11:00:31
+11:57:04
+13:50:37</textarea>
+   	<label id="lab"></label>
+   	<input type="text" name="hora1" id="hora1" value="10:27:37" />
+   	<input type="text" name="hora3" id="hora3" value="14:23:09" />
+   	<input type="text" name="hora4" id="hora4" value="15:20:43" />
+   	<input type="text" name="hora2" id="hora2" value="18:31:09" />
+   	<label id="lb"></label>
+   	<button type="button" id="hm">enviar</button>
+   </section>
+			<section name="input_user" class="input_textarea_user scroll_bar">
+		 <div class="header_input_textarea_user">
+		 	<h3>CONTROLE E AJUSTES</h3>
+		 	<h3>ULTRA POA RS</h3>
+		 	<div class="botoes">
+		 	<input type="date" name="" id="input_hoje" value="" />
+		 	<button id="um" type="button">um</button>
+		 	<button id="cinco" type="button">cinco</button>
+		 	</div>
+		 </div>
+			<textarea class="labelListas" name="" id="listasText" rows="8" cols="">10	mauricio	Not Set7	 2025-01-02     13:00:00	1
+10	mauricio	Not Set7	 2025-01-02     16:00:00	1
+10	mauricio	Not Set7	 2025-01-02     17:00:00	1
+10	mauricio	Not Set7	 2025-01-02     21:20:00	1
+10	mauricio	Not Set7	 2025-01-03     13:00:00	1
+10	mauricio	Not Set7	 2025-01-03     16:00:00	1
+10	mauricio	Not Set7	 2025-01-03     17:00:00	1
+10	mauricio	Not Set7	 2025-01-03     21:20:00	1
+10	mauricio	Not Set7	 2025-01-04     13:00:00	1
+10	mauricio	Not Set7	 2025-01-04     16:00:00	1
+10	mauricio	Not Set7	 2025-01-04     17:00:00	1
+10	mauricio	Not Set7	 2025-01-04     21:20:00	1
+10	mauricio	Not Set7	 2025-01-05     07:45:00	1
+10	mauricio	Not Set7	 2025-01-05     14:00:00	1
+10	mauricio	Not Set7	 2025-01-06     13:00:00	1
+10	mauricio	Not Set7	 2025-01-06     16:00:00	1
+10	mauricio	Not Set7	 2025-01-06     17:00:00	1
+10	mauricio	Not Set7	 2025-01-06     21:20:00	1
+10	mauricio	Not Set7	 2025-01-07     13:00:00	1
+10	mauricio	Not Set7	 2025-01-07     16:00:00	1
+10	mauricio	Not Set7	 2025-01-07     17:00:00	1
+10	mauricio	Not Set7	 2025-01-07     21:20:00	1
+10	mauricio	Not Set7	      17:00:00	1
+10	mauricio	Not Set7	      2025-01-07	1
+	mauricio	Not Set7	 2025-01-07     21:20:00	1
+</textarea>
+			<div class="botoes">
+			<button type="button" id="btn_ajustar" >AJUSTAR</button>
+			<button type="button" id="btn_ponto" onclick="calculoFuncionario()">PONTO</button>
+			<button type="button" id="btn_ponto_auto" onclick="completePonto()">PONTOS</button>
+			<button type="button" id="btn_limpar" onclick="lim()">LIMPAR</button>
+			<button type="button" id="btn_ajust" >AJUST</button>
+			</div>
+			</section>
+   <section id="boxe_resultados">
+			<!-- JS -->
+			<div class="resultados cabecalho">
+				<h3>DETALHES DOS RESULTADOS</h3>
+			</div>
+			<div class="resultados corpo">
+				<h4>
+					
+      REGISTROS ESTACIONAMENTO:
+
+				</h4>
+			</div>
+			<div class="resultados rodape">
+				<div>
+					<h4>
+						LISTA REGISTROS AJUSTADOS:
+					</h4>
+				</div>
+			</div> 
+			<div class="resultados copiados" id="copiados">
+				<div>
+					<h4>
+						LISTA REGISTROS COPIADOS:
+					</h4>
+
+				</div>
+			</div> 
+			<!-- FIM JS -->
+   </section>
+
+		</div>
+</body>
+</html>
